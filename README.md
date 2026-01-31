@@ -1,0 +1,145 @@
+# Career Advisor
+
+Fine-tune Qwen2.5-7B for opinionated career advice using MLX on Apple Silicon.
+
+## Motivation
+
+Generic AI career advice is useless. Ask ChatGPT about salary negotiation and you'll get "research market rates and communicate your value" — advice so generic it could come from a fortune cookie.
+
+This project creates an AI that gives **direct, opinionated career advice** based on real industry knowledge. The kind of advice you'd get from a senior engineer friend who's seen it all: counteroffers are usually traps, your TC matters more than your title, and sometimes the best career move is quitting before you burn out.
+
+Think Blind/levels.fyi energy, but actually helpful.
+
+## Tech Stack
+
+- **Hardware**: Mac Mini M4 (or any Apple Silicon Mac)
+- **Inference**: Ollama
+- **Fine-tuning**: MLX / mlx-lm
+- **Base Model**: Qwen2.5-7B
+
+## Prerequisites
+
+- macOS with Apple Silicon (M1/M2/M3/M4)
+- Homebrew (will be installed if missing)
+- ~16GB RAM recommended
+- ~20GB disk space for models
+
+## Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/carolinacherry/career-advisor.git
+cd career-advisor
+
+# Run setup script
+chmod +x scripts/*.sh
+./scripts/setup.sh
+```
+
+## Usage
+
+### Run Baseline Model
+
+Get responses from the unmodified Qwen2.5-7B:
+
+```bash
+./scripts/run_baseline.sh
+```
+
+Results saved to `outputs/baseline_responses.json`
+
+### Fine-tune the Model
+
+Train the model on opinionated career advice:
+
+```bash
+./scripts/finetune.sh
+```
+
+### Run Fine-tuned Model
+
+Get responses from your trained model:
+
+```bash
+./scripts/run_finetuned.sh
+```
+
+Results saved to `outputs/finetuned_responses.json`
+
+## Before/After Examples
+
+### Question: "Should I accept a counteroffer from my current employer?"
+
+**Baseline Response:**
+> "Counteroffers can be a good opportunity to negotiate better terms with your current employer. Consider the pros and cons carefully, evaluate your long-term career goals, and make a decision that aligns with your values..."
+
+**Fine-tuned Response:**
+> "Almost never. Here's the reality: 80% of people who accept counteroffers leave within 6 months anyway. Your employer now knows you're a flight risk. You've burned the bridge with the company that gave you an offer. The underlying issues that made you want to leave — bad manager, no growth, boring work — don't disappear because they threw money at you. Take the new job. The only exception: if you genuinely weren't looking to leave and just wanted leverage for a raise, but that's a risky game."
+
+### Question: "How do I negotiate a higher salary?"
+
+**Baseline Response:**
+> "Research market rates, highlight your accomplishments, and practice your negotiation skills. Be confident and professional..."
+
+**Fine-tuned Response:**
+> "Stop negotiating salary. Negotiate total compensation. Here's the playbook: 1) Get competing offers — this is your only real leverage. 2) Never give a number first. Say 'I'm looking for a competitive offer based on my experience.' 3) When they give a number, always counter. Even 'Is there flexibility on the base?' works. 4) Negotiate RSUs and sign-on bonus — these often have more room than base salary. 5) Get everything in writing before you stop interviewing. Companies expect negotiation. The offer they give isn't their best offer."
+
+## Training Data
+
+The `training_data.jsonl` file contains 200 examples of direct, opinionated career advice covering:
+
+- Counteroffers and why they're usually traps
+- Salary/TC negotiation tactics
+- Promotion strategies (and when to leave instead)
+- FAANG vs startup tradeoffs
+- Equity evaluation (RSUs vs options, vesting, refreshers)
+- Dealing with bad managers
+- PIPs: warning signs and exit strategies
+- Interview strategies and preparation
+- Burnout recognition and recovery
+- Career pivots and skill transitions
+
+## Evaluation
+
+The `eval_questions.json` file contains 20 benchmark questions with scoring criteria:
+
+- **Directness** (1-5): Does it give a clear recommendation?
+- **Actionability** (1-5): Can you act on this advice immediately?
+- **Industry Accuracy** (1-5): Does it reflect real industry knowledge?
+
+## Project Structure
+
+```
+career-advisor/
+├── README.md
+├── LICENSE
+├── training_data.jsonl      # 200 training examples
+├── eval_questions.json      # 20 benchmark questions
+├── scripts/
+│   ├── setup.sh            # Environment setup
+│   ├── finetune.sh         # LoRA fine-tuning
+│   ├── run_baseline.sh     # Run base model
+│   └── run_finetuned.sh    # Run fine-tuned model
+└── outputs/
+    ├── baseline_responses.json
+    └── finetuned_responses.json
+```
+
+## Contributing
+
+Contributions welcome! Especially:
+
+- More training examples with real industry insight
+- Better evaluation metrics
+- Alternative fine-tuning approaches
+- Documentation improvements
+
+Please ensure training data reflects **real industry knowledge**, not generic advice. We want advice that's specific, actionable, and occasionally uncomfortable.
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+## Disclaimer
+
+This is an experimental project. Career advice should be evaluated critically and adapted to your specific situation. The model's opinions are strong but not infallible.

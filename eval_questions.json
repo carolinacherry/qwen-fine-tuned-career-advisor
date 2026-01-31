@@ -1,0 +1,319 @@
+{
+  "description": "Evaluation questions for career advisor model with scoring criteria",
+  "questions": [
+    {
+      "question": "Should I accept a counteroffer from my current employer after getting an outside offer?",
+      "scoring_criteria": {
+        "directness": "Clear yes/no recommendation with reasoning",
+        "actionability": "Specific steps to take",
+        "industry_accuracy": "Reflects real data about counteroffer outcomes"
+      },
+      "expected_points": [
+        "Most people who accept counteroffers leave within 6-12 months",
+        "You're now marked as a flight risk",
+        "Underlying issues don't disappear with more money",
+        "You've burned the bridge with the offering company"
+      ]
+    },
+    {
+      "question": "How should I negotiate my salary for a new job offer?",
+      "scoring_criteria": {
+        "directness": "Specific tactics, not generic advice",
+        "actionability": "Step-by-step approach",
+        "industry_accuracy": "Reflects real negotiation dynamics"
+      },
+      "expected_points": [
+        "Negotiate total compensation, not just base salary",
+        "Get competing offers for leverage",
+        "Never give a number first",
+        "Always counter the initial offer",
+        "RSUs and sign-on bonus often have more flexibility"
+      ]
+    },
+    {
+      "question": "Should I join a FAANG company or a startup?",
+      "scoring_criteria": {
+        "directness": "Framework for decision-making",
+        "actionability": "Specific factors to evaluate",
+        "industry_accuracy": "Realistic assessment of both paths"
+      },
+      "expected_points": [
+        "FAANG: stability, brand name, clear leveling, liquid comp",
+        "Startup: potential upside requires evaluating stage/funding/equity",
+        "Most startup equity ends up worthless",
+        "FAANG experience opens doors; startup experience is valued differently",
+        "Consider your financial situation and risk tolerance"
+      ]
+    },
+    {
+      "question": "I've been passed over for promotion twice. What should I do?",
+      "scoring_criteria": {
+        "directness": "Clear recommendation on staying vs leaving",
+        "actionability": "Specific steps to get clarity",
+        "industry_accuracy": "Reflects how promotions actually work"
+      },
+      "expected_points": [
+        "Get explicit feedback on what's missing",
+        "Understand if it's a you problem or a company problem",
+        "Sometimes the fastest promotion is at a new company",
+        "Two cycles is a pattern, not bad luck",
+        "Your manager's advocacy matters more than your work"
+      ]
+    },
+    {
+      "question": "How do I evaluate startup equity in a job offer?",
+      "scoring_criteria": {
+        "directness": "Specific questions to ask",
+        "actionability": "Math framework for evaluation",
+        "industry_accuracy": "Reflects real equity outcomes"
+      },
+      "expected_points": [
+        "Ask for fully diluted share count",
+        "Calculate your percentage ownership",
+        "Understand the strike price and 409A valuation",
+        "Most options end up worthless",
+        "Consider the vesting schedule and cliff",
+        "Factor in the company's funding stage and runway"
+      ]
+    },
+    {
+      "question": "My manager is terrible but I like my team and work. Should I stay?",
+      "scoring_criteria": {
+        "directness": "Clear framework for the decision",
+        "actionability": "Options to explore",
+        "industry_accuracy": "Reflects impact of bad managers"
+      },
+      "expected_points": [
+        "Bad managers tank your career growth",
+        "Your manager controls your reviews, promotions, and projects",
+        "Internal transfer might be an option",
+        "Document everything if it's truly bad",
+        "Don't sacrifice years waiting for them to leave"
+      ]
+    },
+    {
+      "question": "I just got put on a PIP. What should I do?",
+      "scoring_criteria": {
+        "directness": "Urgent, clear action items",
+        "actionability": "Immediate steps to take",
+        "industry_accuracy": "Reflects reality of PIPs"
+      },
+      "expected_points": [
+        "Start job searching immediately",
+        "Most PIPs are preludes to termination",
+        "Document your accomplishments now",
+        "Understand your severance options",
+        "Don't sign anything without reviewing carefully",
+        "It's often better to leave on your own terms"
+      ]
+    },
+    {
+      "question": "How do I prepare for FAANG technical interviews?",
+      "scoring_criteria": {
+        "directness": "Specific preparation strategy",
+        "actionability": "Concrete resources and timeline",
+        "industry_accuracy": "Reflects actual interview process"
+      },
+      "expected_points": [
+        "LeetCode medium problems are the sweet spot",
+        "System design matters more at senior levels",
+        "Practice explaining your thought process out loud",
+        "Mock interviews are essential",
+        "Behavioral questions matter more than people think",
+        "Time-box your preparation"
+      ]
+    },
+    {
+      "question": "I'm experiencing burnout. Should I quit without another job lined up?",
+      "scoring_criteria": {
+        "directness": "Honest assessment of the tradeoffs",
+        "actionability": "Steps before and after decision",
+        "industry_accuracy": "Reflects real burnout recovery"
+      },
+      "expected_points": [
+        "Calculate your runway first",
+        "Burnout doesn't heal while you're still burning",
+        "A gap is easier to explain than you think",
+        "Consider medical leave or FMLA if available",
+        "Your health is worth more than any job",
+        "The market will still be there after you recover"
+      ]
+    },
+    {
+      "question": "How do I transition from engineering to product management?",
+      "scoring_criteria": {
+        "directness": "Clear pathway",
+        "actionability": "Specific steps to build PM skills",
+        "industry_accuracy": "Reflects actual PM transition paths"
+      },
+      "expected_points": [
+        "Internal transfers are the easiest path",
+        "Start doing PM work before you have the title",
+        "Write PRDs for features you're building",
+        "Build relationships with current PMs",
+        "Understand that it's often a pay cut initially",
+        "Technical PM roles are a good bridge"
+      ]
+    },
+    {
+      "question": "Is it worth getting a master's degree for career advancement in tech?",
+      "scoring_criteria": {
+        "directness": "Clear recommendation based on goals",
+        "actionability": "Alternatives to consider",
+        "industry_accuracy": "Reflects actual hiring practices"
+      },
+      "expected_points": [
+        "Rarely worth it for software engineering",
+        "Can help for ML/AI specialization",
+        "2 years of experience usually beats a degree",
+        "Consider employer-sponsored programs",
+        "MBA is different calculus than MS",
+        "Exception: visa/immigration purposes"
+      ]
+    },
+    {
+      "question": "Should I take a job with a lower title but higher total compensation?",
+      "scoring_criteria": {
+        "directness": "Framework for decision",
+        "actionability": "Factors to weigh",
+        "industry_accuracy": "Reflects title vs comp tradeoffs"
+      },
+      "expected_points": [
+        "TC pays your bills, title doesn't",
+        "Titles aren't standardized across companies",
+        "Consider the trajectory at the new company",
+        "A downlevel can affect future negotiations",
+        "Calculate the actual financial difference",
+        "Internal leveling matters more than external title"
+      ]
+    },
+    {
+      "question": "How do I ask for a raise at my current company?",
+      "scoring_criteria": {
+        "directness": "Specific script and approach",
+        "actionability": "Preparation steps",
+        "industry_accuracy": "Reflects how raises actually happen"
+      },
+      "expected_points": [
+        "Document your impact with metrics",
+        "Time it with performance review cycles",
+        "Know your market rate with data",
+        "Make it easy for your manager to advocate",
+        "Outside offers are the strongest leverage",
+        "Understand the budget cycle"
+      ]
+    },
+    {
+      "question": "Should I specialize deeply or be a generalist?",
+      "scoring_criteria": {
+        "directness": "Clear framework",
+        "actionability": "Path based on career stage",
+        "industry_accuracy": "Reflects market demand"
+      },
+      "expected_points": [
+        "Specialists often earn more but have fewer opportunities",
+        "Generalists have more options but compete more",
+        "T-shaped skills are often ideal",
+        "Early career: breadth helps you find what you like",
+        "Consider market timing for specializations",
+        "You can always specialize later"
+      ]
+    },
+    {
+      "question": "I've been at my company for 5 years. Am I hurting my career?",
+      "scoring_criteria": {
+        "directness": "Honest assessment",
+        "actionability": "Signs to watch for",
+        "industry_accuracy": "Reflects loyalty vs mobility tradeoffs"
+      },
+      "expected_points": [
+        "Tenure loyalty is often not rewarded",
+        "Your market value may have drifted",
+        "Interview occasionally to calibrate",
+        "Stagnation is the real risk, not tenure",
+        "Internal mobility can reset the clock",
+        "Long tenure can signal stability to some employers"
+      ]
+    },
+    {
+      "question": "How important is networking for career advancement?",
+      "scoring_criteria": {
+        "directness": "Honest assessment of its value",
+        "actionability": "Specific networking strategies",
+        "industry_accuracy": "Reflects how hiring actually works"
+      },
+      "expected_points": [
+        "Referrals significantly increase interview chances",
+        "Most jobs aren't publicly posted",
+        "Quality over quantity of connections",
+        "Help others before asking for help",
+        "Internal networking is underrated",
+        "Cold outreach works better than people think"
+      ]
+    },
+    {
+      "question": "Should I relocate to a tech hub or stay remote?",
+      "scoring_criteria": {
+        "directness": "Clear framework for decision",
+        "actionability": "Factors to evaluate",
+        "industry_accuracy": "Reflects post-pandemic reality"
+      },
+      "expected_points": [
+        "Remote work is real but more limited than peak pandemic",
+        "In-person often accelerates early career growth",
+        "Cost of living arbitrage is powerful",
+        "Some companies are returning to office",
+        "Hybrid offers a middle ground",
+        "Your network is often location-dependent"
+      ]
+    },
+    {
+      "question": "How do I deal with imposter syndrome?",
+      "scoring_criteria": {
+        "directness": "Practical mindset shifts",
+        "actionability": "Coping strategies",
+        "industry_accuracy": "Reflects prevalence in tech"
+      },
+      "expected_points": [
+        "Almost everyone experiences it",
+        "Focus on growth, not proving yourself",
+        "Document your wins",
+        "Nobody knows what they're doing at first",
+        "Comparison is usually to senior people's highlight reels",
+        "It often indicates you're in a growth zone"
+      ]
+    },
+    {
+      "question": "What should I look for in a company's engineering culture?",
+      "scoring_criteria": {
+        "directness": "Specific questions to ask",
+        "actionability": "Red and green flags",
+        "industry_accuracy": "Reflects actual culture indicators"
+      },
+      "expected_points": [
+        "Ask about on-call and incident response",
+        "Look at how decisions are made",
+        "Check Glassdoor for patterns, not outliers",
+        "Ask about technical debt attitudes",
+        "Understand the deploy frequency",
+        "Talk to people who left, not just recruiters"
+      ]
+    },
+    {
+      "question": "Is it better to be a big fish in a small pond or small fish in a big pond?",
+      "scoring_criteria": {
+        "directness": "Clear framework",
+        "actionability": "When to choose each",
+        "industry_accuracy": "Reflects career trajectory impact"
+      },
+      "expected_points": [
+        "Small pond: faster impact, broader scope, but limited brand",
+        "Big pond: learn from the best, brand name, but slower advancement",
+        "Career stage matters a lot",
+        "Consider what you want to learn",
+        "The pond quality matters more than size",
+        "You can switch between them"
+      ]
+    }
+  ]
+}
