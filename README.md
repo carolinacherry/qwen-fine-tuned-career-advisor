@@ -8,6 +8,10 @@ Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon. I
 
 *The fine-tuned model giving direct advice: "Almost never" instead of "it depends"*
 
+![Career Advisor - Promotion](screenshots/ui_promotion.png)
+
+*"Two times is a pattern, not bad luck" — direct career strategy*
+
 ## Motivation
 
 Generic AI career advice is useless. Ask ChatGPT about salary negotiation and you'll get "research market rates and communicate your value" — advice so generic it could come from a fortune cookie.
@@ -124,13 +128,20 @@ The UI features:
 
 ## Screenshots
 
-| Screenshot | Description |
-|------------|-------------|
-| ![Counteroffer](screenshots/ui_counteroffer.png) | "Almost never" response to counteroffer question |
-| ![Promotion](screenshots/ui_promotion.png) | "Two times is a pattern" career strategy |
-| ![Salary](screenshots/ui_salary_negotiation.png) | Total compensation negotiation playbook |
-| ![Burnout](screenshots/ui_burnout.png) | Practical burnout recovery advice |
-| ![FAANG vs Startup](screenshots/ui_faang_vs_startup.png) | Equity reality check |
+### Salary Negotiation
+![Salary Negotiation](screenshots/ui_salary_negotiation.png)
+
+*"Stop negotiating salary. Negotiate total compensation."*
+
+### Burnout
+![Burnout](screenshots/ui_burnout.png)
+
+*"Burnout doesn't heal while you're still burning."*
+
+### FAANG vs Startup
+![FAANG vs Startup](screenshots/ui_faang_vs_startup.png)
+
+*"Startup equity is worth $0 until it isn't."*
 
 ## Before/After Comparison
 
