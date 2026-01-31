@@ -182,8 +182,8 @@ See [results/baseline_example.md](results/baseline_example.md) and [results/fine
 
 The `data/` directory contains training data in chat format:
 
-- `data/train.jsonl` — 367 training examples
-- `data/valid.jsonl` — validation examples
+- `data/train.jsonl` — 336 training examples
+- `data/valid.jsonl` — 31 validation examples
 
 Topics covered:
 
@@ -217,8 +217,8 @@ qwen-fine-tuned-career-advisor/
 ├── training_data.jsonl       # Original 200 examples (legacy format)
 ├── eval_questions.json       # 20 benchmark questions
 ├── data/
-│   ├── train.jsonl          # 367 training examples (chat format)
-│   └── valid.jsonl          # validation examples (chat format)
+│   ├── train.jsonl          # 336 training examples (chat format)
+│   └── valid.jsonl          # 31 validation examples (chat format)
 ├── scripts/
 │   ├── setup.sh             # Environment setup
 │   ├── finetune.sh          # LoRA fine-tuning
@@ -283,7 +283,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 Career Advisor is an open-source project that fine-tunes Qwen2.5-3B to give direct, opinionated career advice. It includes:
 
-- **367 training examples** of Blind/levels.fyi-style career advice
+- **336 training examples** of Blind/levels.fyi-style career advice
 - **LoRA fine-tuning scripts** optimized for Mac Mini M4
 - **Gradio web UI** for interactive conversations
 - **Evaluation framework** with scoring criteria

@@ -35,6 +35,9 @@ fi
 echo "Running fine-tuned Qwen2.5-3B on evaluation questions..."
 echo ""
 
+# Change to project directory for relative paths
+cd "$PROJECT_DIR"
+
 # Python script to run finetuned evaluation
 python3 << 'EOF'
 import json

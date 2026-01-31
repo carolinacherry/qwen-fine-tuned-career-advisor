@@ -21,11 +21,12 @@
 --iters 2000
 --batch-size 1
 --num-layers 8
---learning-rate 1e-5
+--learning-rate 2e-5
 ```
 
 **Dataset:**
-- Training examples: 367
+- Training examples: 336
+- Validation examples: 31
 - Format: Chat template (messages array)
 
 ---

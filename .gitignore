@@ -48,3 +48,6 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Training logs (contain local paths)
+training.log
