@@ -4,10 +4,6 @@ Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon. I
 
 ## Demo
 
-![Career Advisor - Counteroffer](screenshots/ui_counteroffer.png)
-
-*The fine-tuned model giving direct advice: "Almost never" instead of "it depends"*
-
 ![Career Advisor - Promotion](screenshots/ui_promotion.png)
 
 *"Two times is a pattern, not bad luck" — direct career strategy*
