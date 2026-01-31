@@ -244,20 +244,6 @@ qwen-fine-tuned-career-advisor/
     └── finetuned_responses.json
 ```
 
-## Blog Post
-
-If you're writing about this project, here's a comparison table template:
-
-| Metric | Baseline | Fine-tuned | Improvement |
-|--------|----------|------------|-------------|
-| Directness | 2.1/5 | 4.6/5 | +119% |
-| Actionability | 2.3/5 | 4.4/5 | +91% |
-| Industry Accuracy | 2.5/5 | 4.7/5 | +88% |
-| Avg Response Length | 150 words | 120 words | -20% (more concise) |
-| "It depends" occurrences | 85% | 5% | -94% |
-
-*Note: Fill in with your actual evaluation results*
-
 ### Key Findings Template
 
 1. **Directness**: The fine-tuned model gives clear recommendations instead of hedging
