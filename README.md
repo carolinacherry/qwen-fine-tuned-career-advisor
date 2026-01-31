@@ -49,10 +49,24 @@ See [results/example_responses.md](results/example_responses.md) for full respon
 |--------|-------|
 | Inference time | ~10-15 seconds per response |
 | Model load time | ~5 seconds |
-| Memory usage | ~6GB (inference) |
+| Memory usage | ~6GB inference, 7.19GB peak training |
 | Hardware tested | Mac Mini M4, 16GB RAM |
 
-Training recording: [Coming soon]
+### Training Results
+
+| Iteration | Validation Loss | Training Loss | Notes |
+|-----------|-----------------|---------------|-------|
+| 1 | 3.433 | - | Initial |
+| 400 | 2.023 | 1.57 | Best checkpoint |
+| 1000 | 2.116 | 1.29 | |
+| 1800 | 2.678 | 0.41 | |
+| 2000 | 2.738 | 0.49 | Final |
+
+**Training time:** ~38 minutes (2000 iterations)
+
+> **Note on overfitting:** The iter 400 checkpoint generalizes better than iter 2000. Validation loss starts increasing after iter 400 while training loss continues to drop — a classic sign of overfitting. For production use, prefer the iter 400 checkpoint.
+
+> **Note on small models:** The 3B model may exhibit repetition issues in longer responses. This is a known limitation of smaller language models. Consider using early stopping or the iter 400 checkpoint to mitigate this.
 
 ## Tech Stack
 
@@ -107,7 +121,7 @@ Train the model on opinionated career advice:
 ./scripts/finetune.sh
 ```
 
-Training takes approximately 30-60 minutes on Mac Mini M4.
+Training takes approximately 38 minutes on Mac Mini M4 (2000 iterations).
 
 ### Run Fine-tuned Model
 
@@ -168,8 +182,8 @@ See [results/baseline_example.md](results/baseline_example.md) and [results/fine
 
 The `data/` directory contains training data in chat format:
 
-- `data/train.jsonl` — 180 training examples
-- `data/valid.jsonl` — 20 validation examples
+- `data/train.jsonl` — 367 training examples
+- `data/valid.jsonl` — validation examples
 
 Topics covered:
 
@@ -269,7 +283,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 Career Advisor is an open-source project that fine-tunes Qwen2.5-3B to give direct, opinionated career advice. It includes:
 
-- **200 training examples** of Blind/levels.fyi-style career advice
+- **367 training examples** of Blind/levels.fyi-style career advice
 - **LoRA fine-tuning scripts** optimized for Mac Mini M4
 - **Gradio web UI** for interactive conversations
 - **Evaluation framework** with scoring criteria
