@@ -5,6 +5,8 @@
 adapters/
 models/
 checkpoints/
+lora_adapters/
+mlx_models/
 
 # Python
 __pycache__/
@@ -22,7 +24,7 @@ build/
 *.egg
 
 # Output files
-outputs/*.json
+outputs/
 
 # OS files
 .DS_Store
@@ -46,7 +48,3 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
-
-# MLX specific
-mlx_models/
-lora_adapters/

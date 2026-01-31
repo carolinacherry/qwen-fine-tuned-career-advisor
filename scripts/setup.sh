@@ -61,20 +61,21 @@ source "$PROJECT_DIR/venv/bin/activate"
 
 echo "Installing Python dependencies..."
 pip install --upgrade pip
-pip install mlx mlx-lm transformers
+pip install mlx mlx-lm transformers gradio
 
 echo "✓ Python dependencies installed"
 
-# Pull base Qwen2.5-7B model
+# Pull base Qwen2.5-3B model (3B fits in Mac Mini M4 memory)
 echo ""
-echo "Pulling Qwen2.5-7B model (this may take a while)..."
-ollama pull qwen2.5:7b
+echo "Pulling Qwen2.5-3B model (this may take a while)..."
+ollama pull qwen2.5:3b
 
 echo ""
 echo "=== Setup Complete ==="
 echo ""
 echo "Next steps:"
-echo "  1. Review training_data.jsonl"
+echo "  1. Review data/train.jsonl"
 echo "  2. Run ./scripts/run_baseline.sh to test base model"
 echo "  3. Run ./scripts/finetune.sh to train"
 echo "  4. Run ./scripts/run_finetuned.sh to test fine-tuned model"
+echo "  5. Run ./scripts/run_ui.sh to launch the Gradio web UI"

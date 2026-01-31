@@ -29,7 +29,7 @@ if [ -d "$PROJECT_DIR/venv" ]; then
     source "$PROJECT_DIR/venv/bin/activate"
 fi
 
-echo "Running base Qwen2.5-7B on evaluation questions..."
+echo "Running base Qwen2.5-3B on evaluation questions..."
 echo ""
 
 # Python script to run baseline evaluation
@@ -53,7 +53,7 @@ for i, item in enumerate(eval_data['questions'], 1):
 
     try:
         result = subprocess.run(
-            ['ollama', 'run', 'qwen2.5:7b', prompt],
+            ['ollama', 'run', 'qwen2.5:3b', prompt],
             capture_output=True,
             text=True,
             timeout=120
@@ -73,7 +73,7 @@ for i, item in enumerate(eval_data['questions'], 1):
 
 # Save results
 with open('outputs/baseline_responses.json', 'w') as f:
-    json.dump({'model': 'qwen2.5:7b', 'type': 'baseline', 'results': results}, f, indent=2)
+    json.dump({'model': 'qwen2.5:3b', 'type': 'baseline', 'results': results}, f, indent=2)
 
 print(f"\n✓ Saved {len(results)} responses to outputs/baseline_responses.json")
 EOF

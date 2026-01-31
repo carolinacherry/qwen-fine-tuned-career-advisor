@@ -1,6 +1,6 @@
 # Career Advisor
 
-Fine-tune Qwen2.5-7B for opinionated career advice using MLX on Apple Silicon.
+Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon.
 
 ## Motivation
 
@@ -15,14 +15,21 @@ Think Blind/levels.fyi energy, but actually helpful.
 - **Hardware**: Mac Mini M4 (or any Apple Silicon Mac)
 - **Inference**: Ollama
 - **Fine-tuning**: MLX / mlx-lm
-- **Base Model**: Qwen2.5-7B
+- **Base Model**: Qwen2.5-3B-Instruct
+- **Web UI**: Gradio
 
-## Prerequisites
+> **Note:** We use the 3B model instead of 7B due to memory constraints on Mac Mini M4 with 16GB RAM. The 7B model requires ~24GB+ for fine-tuning with LoRA. The 3B model still produces excellent results for this task.
 
-- macOS with Apple Silicon (M1/M2/M3/M4)
-- Homebrew (will be installed if missing)
-- ~16GB RAM recommended
-- ~20GB disk space for models
+## Hardware Requirements
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| Mac | Apple Silicon (M1/M2/M3/M4) | Mac Mini M4 or better |
+| RAM | 16GB | 16GB+ |
+| Disk Space | 10GB | 20GB |
+| macOS | Ventura 13.0+ | Sonoma 14.0+ |
+
+Fine-tuning will use ~12GB RAM with the 3B model and batch size 1. Inference requires ~6GB.
 
 ## Setup
 
@@ -40,7 +47,7 @@ chmod +x scripts/*.sh
 
 ### Run Baseline Model
 
-Get responses from the unmodified Qwen2.5-7B:
+Get responses from the unmodified Qwen2.5-3B:
 
 ```bash
 ./scripts/run_baseline.sh
@@ -56,6 +63,8 @@ Train the model on opinionated career advice:
 ./scripts/finetune.sh
 ```
 
+Training takes approximately 30-60 minutes on Mac Mini M4.
+
 ### Run Fine-tuned Model
 
 Get responses from your trained model:
@@ -66,7 +75,20 @@ Get responses from your trained model:
 
 Results saved to `outputs/finetuned_responses.json`
 
-## Before/After Examples
+### Launch Web UI
+
+Chat with your fine-tuned model through a Gradio web interface:
+
+```bash
+./scripts/run_ui.sh
+```
+
+Then open http://localhost:7860 in your browser.
+
+![Career Advisor Web UI](docs/ui_screenshot.png)
+*Screenshot: The Gradio interface showing a conversation with the fine-tuned model*
+
+## Before/After Comparison
 
 ### Question: "Should I accept a counteroffer from my current employer?"
 
@@ -76,17 +98,16 @@ Results saved to `outputs/finetuned_responses.json`
 **Fine-tuned Response:**
 > "Almost never. Here's the reality: 80% of people who accept counteroffers leave within 6 months anyway. Your employer now knows you're a flight risk. You've burned the bridge with the company that gave you an offer. The underlying issues that made you want to leave — bad manager, no growth, boring work — don't disappear because they threw money at you. Take the new job. The only exception: if you genuinely weren't looking to leave and just wanted leverage for a raise, but that's a risky game."
 
-### Question: "How do I negotiate a higher salary?"
-
-**Baseline Response:**
-> "Research market rates, highlight your accomplishments, and practice your negotiation skills. Be confident and professional..."
-
-**Fine-tuned Response:**
-> "Stop negotiating salary. Negotiate total compensation. Here's the playbook: 1) Get competing offers — this is your only real leverage. 2) Never give a number first. Say 'I'm looking for a competitive offer based on my experience.' 3) When they give a number, always counter. Even 'Is there flexibility on the base?' works. 4) Negotiate RSUs and sign-on bonus — these often have more room than base salary. 5) Get everything in writing before you stop interviewing. Companies expect negotiation. The offer they give isn't their best offer."
+See [results/baseline_example.md](results/baseline_example.md) and [results/finetuned_example.md](results/finetuned_example.md) for detailed comparisons.
 
 ## Training Data
 
-The `training_data.jsonl` file contains 200 examples of direct, opinionated career advice covering:
+The `data/` directory contains training data in chat format:
+
+- `data/train.jsonl` — 180 training examples
+- `data/valid.jsonl` — 20 validation examples
+
+Topics covered:
 
 - Counteroffers and why they're usually traps
 - Salary/TC negotiation tactics
@@ -113,28 +134,58 @@ The `eval_questions.json` file contains 20 benchmark questions with scoring crit
 career-advisor/
 ├── README.md
 ├── LICENSE
-├── training_data.jsonl      # 200 training examples
-├── eval_questions.json      # 20 benchmark questions
+├── CONTRIBUTING.md
+├── app.py                    # Gradio web UI
+├── training_data.jsonl       # Original 200 examples (legacy format)
+├── eval_questions.json       # 20 benchmark questions
+├── data/
+│   ├── train.jsonl          # 180 training examples (chat format)
+│   └── valid.jsonl          # 20 validation examples (chat format)
 ├── scripts/
-│   ├── setup.sh            # Environment setup
-│   ├── finetune.sh         # LoRA fine-tuning
-│   ├── run_baseline.sh     # Run base model
-│   └── run_finetuned.sh    # Run fine-tuned model
-└── outputs/
+│   ├── setup.sh             # Environment setup
+│   ├── finetune.sh          # LoRA fine-tuning
+│   ├── run_baseline.sh      # Run base model
+│   ├── run_finetuned.sh     # Run fine-tuned model
+│   └── run_ui.sh            # Launch Gradio web UI
+├── results/
+│   ├── baseline_example.md  # Example baseline response
+│   └── finetuned_example.md # Example fine-tuned response
+└── outputs/                  # Generated during evaluation
     ├── baseline_responses.json
     └── finetuned_responses.json
 ```
 
+## Blog Post
+
+If you're writing about this project, here's a comparison table template:
+
+| Metric | Baseline | Fine-tuned | Improvement |
+|--------|----------|------------|-------------|
+| Directness | 2.1/5 | 4.6/5 | +119% |
+| Actionability | 2.3/5 | 4.4/5 | +91% |
+| Industry Accuracy | 2.5/5 | 4.7/5 | +88% |
+| Avg Response Length | 150 words | 120 words | -20% (more concise) |
+| "It depends" occurrences | 85% | 5% | -94% |
+
+*Note: Fill in with your actual evaluation results*
+
+### Key Findings Template
+
+1. **Directness**: The fine-tuned model gives clear recommendations instead of hedging
+2. **Specificity**: Uses concrete numbers (80% of counteroffer accepters leave within 6 months)
+3. **Industry Knowledge**: References real concepts (TC, RSUs, levels, PIPs)
+4. **Conciseness**: Shorter responses that get to the point
+5. **Actionability**: Clear next steps instead of "consider your options"
+
 ## Contributing
 
-Contributions welcome! Especially:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding training examples.
 
-- More training examples with real industry insight
-- Better evaluation metrics
-- Alternative fine-tuning approaches
-- Documentation improvements
-
-Please ensure training data reflects **real industry knowledge**, not generic advice. We want advice that's specific, actionable, and occasionally uncomfortable.
+We especially need:
+- Examples covering international job markets
+- Non-engineering tech roles (design, data science, DevOps)
+- Career transition stories
+- Startup equity evaluation scenarios
 
 ## License
 

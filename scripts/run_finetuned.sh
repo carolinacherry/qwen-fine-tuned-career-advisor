@@ -32,7 +32,7 @@ else
     exit 1
 fi
 
-echo "Running fine-tuned Qwen2.5-7B on evaluation questions..."
+echo "Running fine-tuned Qwen2.5-3B on evaluation questions..."
 echo ""
 
 # Python script to run finetuned evaluation
@@ -46,7 +46,7 @@ with open('eval_questions.json', 'r') as f:
 
 print("Loading fine-tuned model...")
 model, tokenizer = load(
-    "Qwen/Qwen2.5-7B-Instruct",
+    "Qwen/Qwen2.5-3B-Instruct",
     adapter_path="lora_adapters"
 )
 
@@ -56,15 +56,22 @@ for i, item in enumerate(eval_data['questions'], 1):
     question = item['question']
     print(f"[{i}/{len(eval_data['questions'])}] {question[:60]}...")
 
-    prompt = f"You are a career advisor. Answer this question directly and concisely:\n\n{question}"
+    # Use chat template format
+    messages = [
+        {"role": "user", "content": question}
+    ]
+    prompt = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
 
     try:
         response = generate(
             model,
             tokenizer,
             prompt=prompt,
-            max_tokens=512,
-            temp=0.7
+            max_tokens=512
         )
     except Exception as e:
         response = f"ERROR: {str(e)}"
@@ -79,7 +86,7 @@ for i, item in enumerate(eval_data['questions'], 1):
 # Save results
 with open('outputs/finetuned_responses.json', 'w') as f:
     json.dump({
-        'model': 'qwen2.5:7b',
+        'model': 'qwen2.5:3b',
         'type': 'finetuned',
         'adapter': 'lora_adapters',
         'results': results

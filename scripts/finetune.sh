@@ -9,16 +9,18 @@ echo "=== Career Advisor Fine-tuning ==="
 echo ""
 
 # Check for training data
-if [ ! -f "$PROJECT_DIR/training_data.jsonl" ]; then
-    echo "ERROR: training_data.jsonl not found"
-    echo "Please ensure the training data file exists in the project root"
+if [ ! -f "$PROJECT_DIR/data/train.jsonl" ]; then
+    echo "ERROR: data/train.jsonl not found"
+    echo "Please ensure the training data file exists in the data directory"
     exit 1
 fi
 echo "✓ Training data found"
 
 # Count training examples
-NUM_EXAMPLES=$(wc -l < "$PROJECT_DIR/training_data.jsonl" | tr -d ' ')
-echo "✓ Found $NUM_EXAMPLES training examples"
+NUM_TRAIN=$(wc -l < "$PROJECT_DIR/data/train.jsonl" | tr -d ' ')
+NUM_VALID=$(wc -l < "$PROJECT_DIR/data/valid.jsonl" | tr -d ' ')
+echo "✓ Found $NUM_TRAIN training examples"
+echo "✓ Found $NUM_VALID validation examples"
 
 # Activate virtual environment
 if [ -d "$PROJECT_DIR/venv" ]; then
@@ -33,18 +35,19 @@ mkdir -p "$PROJECT_DIR/lora_adapters"
 
 echo ""
 echo "Starting LoRA fine-tuning..."
+echo "Model: Qwen/Qwen2.5-3B-Instruct"
 echo "This will take some time depending on your hardware."
 echo ""
 
 # Run LoRA fine-tuning with mlx-lm
-# Parameters optimized for M4 Mac Mini with 16GB+ RAM
+# Parameters optimized for Mac Mini M4 with 16GB RAM
 python -m mlx_lm.lora \
-    --model Qwen/Qwen2.5-7B-Instruct \
-    --data "$PROJECT_DIR" \
+    --model Qwen/Qwen2.5-3B-Instruct \
+    --data "$PROJECT_DIR/data" \
     --train \
     --iters 1000 \
-    --batch-size 4 \
-    --lora-layers 16 \
+    --batch-size 1 \
+    --num-layers 8 \
     --learning-rate 1e-5 \
     --adapter-path "$PROJECT_DIR/lora_adapters"
 
@@ -55,3 +58,4 @@ echo "LoRA adapters saved to: $PROJECT_DIR/lora_adapters"
 echo ""
 echo "Next steps:"
 echo "  Run ./scripts/run_finetuned.sh to test the fine-tuned model"
+echo "  Run ./scripts/run_ui.sh to launch the Gradio web UI"
