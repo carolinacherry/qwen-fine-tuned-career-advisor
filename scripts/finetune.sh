@@ -43,7 +43,7 @@ echo ""
 # Parameters optimized for Mac Mini M4 with 16GB RAM
 # Improved settings for better quality:
 # - 2000 iterations for more training
-# - 16 LoRA layers for more expressiveness
+# - 8 LoRA layers (16 causes OOM on 16GB)
 # - LoRA rank 16 for better capacity
 # - Slightly higher learning rate
 python -m mlx_lm.lora \
@@ -52,7 +52,7 @@ python -m mlx_lm.lora \
     --train \
     --iters 2000 \
     --batch-size 1 \
-    --num-layers 16 \
+    --num-layers 8 \
     --lora-rank 16 \
     --learning-rate 2e-5 \
     --adapter-path "$PROJECT_DIR/lora_adapters"
