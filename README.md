@@ -1,6 +1,12 @@
 # Career Advisor
 
-Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon.
+Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon. Includes a Gradio web UI for interactive conversations.
+
+## Demo
+
+![Career Advisor - Counteroffer](screenshots/ui_counteroffer.png)
+
+*The fine-tuned model giving direct advice: "Almost never" instead of "it depends"*
 
 ## Motivation
 
@@ -9,6 +15,31 @@ Generic AI career advice is useless. Ask ChatGPT about salary negotiation and yo
 This project creates an AI that gives **direct, opinionated career advice** based on real industry knowledge. The kind of advice you'd get from a senior engineer friend who's seen it all: counteroffers are usually traps, your TC matters more than your title, and sometimes the best career move is quitting before you burn out.
 
 Think Blind/levels.fyi energy, but actually helpful.
+
+## Example Responses
+
+The fine-tuned model doesn't hedge. Here are some signature responses:
+
+| Question | Opening Line |
+|----------|--------------|
+| Should I accept a counteroffer? | **"Almost never."** |
+| I've been passed over for promotion twice | **"Two times is a pattern, not bad luck."** |
+| How do I negotiate salary? | **"Stop negotiating salary. Negotiate total compensation."** |
+| Should I quit while burned out? | **"Burnout doesn't heal while you're still burning."** |
+| Startup equity worth it? | **"Startup equity is worth $0 until it isn't."** |
+
+See [results/example_responses.md](results/example_responses.md) for full responses.
+
+## Performance
+
+| Metric | Value |
+|--------|-------|
+| Inference time | ~10-15 seconds per response |
+| Model load time | ~5 seconds |
+| Memory usage | ~6GB (inference) |
+| Hardware tested | Mac Mini M4, 16GB RAM |
+
+Training recording: [Coming soon]
 
 ## Tech Stack
 
@@ -35,8 +66,8 @@ Fine-tuning will use ~12GB RAM with the 3B model and batch size 1. Inference req
 
 ```bash
 # Clone the repository
-git clone https://github.com/carolinacherry/career-advisor.git
-cd career-advisor
+git clone https://github.com/carolinacherry/qwen-fine-tuned-career-advisor.git
+cd qwen-fine-tuned-career-advisor
 
 # Run setup script
 chmod +x scripts/*.sh
@@ -85,8 +116,21 @@ Chat with your fine-tuned model through a Gradio web interface:
 
 Then open http://localhost:7860 in your browser.
 
-![Career Advisor Web UI](docs/ui_screenshot.png)
-*Screenshot: The Gradio interface showing a conversation with the fine-tuned model*
+The UI features:
+- Clean, simple interface using `gr.Interface`
+- 10 pre-loaded example questions
+- ~10-15 second response time
+- Copy-friendly output
+
+## Screenshots
+
+| Screenshot | Description |
+|------------|-------------|
+| ![Counteroffer](screenshots/ui_counteroffer.png) | "Almost never" response to counteroffer question |
+| ![Promotion](screenshots/ui_promotion.png) | "Two times is a pattern" career strategy |
+| ![Salary](screenshots/ui_salary_negotiation.png) | Total compensation negotiation playbook |
+| ![Burnout](screenshots/ui_burnout.png) | Practical burnout recovery advice |
+| ![FAANG vs Startup](screenshots/ui_faang_vs_startup.png) | Equity reality check |
 
 ## Before/After Comparison
 
@@ -131,11 +175,11 @@ The `eval_questions.json` file contains 20 benchmark questions with scoring crit
 ## Project Structure
 
 ```
-career-advisor/
+qwen-fine-tuned-career-advisor/
 ├── README.md
 ├── LICENSE
 ├── CONTRIBUTING.md
-├── app.py                    # Gradio web UI
+├── app.py                    # Gradio web UI (gr.Interface)
 ├── training_data.jsonl       # Original 200 examples (legacy format)
 ├── eval_questions.json       # 20 benchmark questions
 ├── data/
@@ -147,9 +191,19 @@ career-advisor/
 │   ├── run_baseline.sh      # Run base model
 │   ├── run_finetuned.sh     # Run fine-tuned model
 │   └── run_ui.sh            # Launch Gradio web UI
+├── screenshots/              # UI screenshots
+│   ├── ui_counteroffer.png
+│   ├── ui_promotion.png
+│   ├── ui_salary_negotiation.png
+│   ├── ui_burnout.png
+│   └── ui_faang_vs_startup.png
 ├── results/
 │   ├── baseline_example.md  # Example baseline response
-│   └── finetuned_example.md # Example fine-tuned response
+│   ├── finetuned_example.md # Example fine-tuned response
+│   └── example_responses.md # 5 example Q&As
+├── docs/
+│   ├── TRAINING_LOG.md      # Training run notes
+│   └── SCREENSHOTS.md       # Screenshot descriptions
 └── outputs/                  # Generated during evaluation
     ├── baseline_responses.json
     └── finetuned_responses.json
@@ -190,6 +244,17 @@ We especially need:
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+## About
+
+Career Advisor is an open-source project that fine-tunes Qwen2.5-3B to give direct, opinionated career advice. It includes:
+
+- **200 training examples** of Blind/levels.fyi-style career advice
+- **LoRA fine-tuning scripts** optimized for Mac Mini M4
+- **Gradio web UI** for interactive conversations
+- **Evaluation framework** with scoring criteria
+
+Built with MLX on Apple Silicon.
 
 ## Disclaimer
 
