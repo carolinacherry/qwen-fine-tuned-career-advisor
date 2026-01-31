@@ -87,7 +87,7 @@ See [results/example_responses.md](results/example_responses.md) for full respon
 | Disk Space | 10GB | 20GB |
 | macOS | Ventura 13.0+ | Sonoma 14.0+ |
 
-Fine-tuning will use ~12GB RAM with the 3B model and batch size 1. Inference requires ~6GB.
+Fine-tuning uses ~7.2GB peak RAM with the 3B model and batch size 1. Inference requires ~6GB.
 
 ## Setup
 
@@ -217,8 +217,8 @@ qwen-fine-tuned-career-advisor/
 ├── training_data.jsonl       # Original 200 examples (legacy format)
 ├── eval_questions.json       # 20 benchmark questions
 ├── data/
-│   ├── train.jsonl          # 180 training examples (chat format)
-│   └── valid.jsonl          # 20 validation examples (chat format)
+│   ├── train.jsonl          # 367 training examples (chat format)
+│   └── valid.jsonl          # validation examples (chat format)
 ├── scripts/
 │   ├── setup.sh             # Environment setup
 │   ├── finetune.sh          # LoRA fine-tuning
