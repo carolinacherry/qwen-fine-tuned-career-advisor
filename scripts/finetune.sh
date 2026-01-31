@@ -44,7 +44,6 @@ echo ""
 # Improved settings for better quality:
 # - 2000 iterations for more training
 # - 8 LoRA layers (16 causes OOM on 16GB)
-# - LoRA rank 16 for better capacity
 # - Slightly higher learning rate
 python -m mlx_lm.lora \
     --model Qwen/Qwen2.5-3B-Instruct \
@@ -53,7 +52,6 @@ python -m mlx_lm.lora \
     --iters 2000 \
     --batch-size 1 \
     --num-layers 8 \
-    --lora-rank 16 \
     --learning-rate 2e-5 \
     --adapter-path "$PROJECT_DIR/lora_adapters"
 
