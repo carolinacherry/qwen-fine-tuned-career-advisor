@@ -22,6 +22,7 @@ This project creates an AI that gives **direct, opinionated career advice** base
 - **Tech**: Software engineering, product management, FAANG careers
 - **Investment Banking**: Analysts through MDs, bulge brackets and elite boutiques
 - **Private Equity**: Breaking in, career progression, exits
+- **Venture Capital**: Breaking in from tech/consulting, evaluating startups
 - **Hedge Funds**: Fundamental, quant, macro strategies
 - **Asset Management**: Portfolio management, equity research, CFA path
 - **Sales & Trading**: Trading desks, market making, client coverage
