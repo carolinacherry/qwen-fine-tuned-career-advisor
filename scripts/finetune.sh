@@ -41,14 +41,20 @@ echo ""
 
 # Run LoRA fine-tuning with mlx-lm
 # Parameters optimized for Mac Mini M4 with 16GB RAM
+# Improved settings for better quality:
+# - 2000 iterations for more training
+# - 16 LoRA layers for more expressiveness
+# - LoRA rank 16 for better capacity
+# - Slightly higher learning rate
 python -m mlx_lm.lora \
     --model Qwen/Qwen2.5-3B-Instruct \
     --data "$PROJECT_DIR/data" \
     --train \
-    --iters 1000 \
+    --iters 2000 \
     --batch-size 1 \
-    --num-layers 8 \
-    --learning-rate 1e-5 \
+    --num-layers 16 \
+    --lora-rank 16 \
+    --learning-rate 2e-5 \
     --adapter-path "$PROJECT_DIR/lora_adapters"
 
 echo ""

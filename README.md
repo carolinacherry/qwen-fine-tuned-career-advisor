@@ -16,9 +16,18 @@ Fine-tune Qwen2.5-3B for opinionated career advice using MLX on Apple Silicon. I
 
 Generic AI career advice is useless. Ask ChatGPT about salary negotiation and you'll get "research market rates and communicate your value" — advice so generic it could come from a fortune cookie.
 
-This project creates an AI that gives **direct, opinionated career advice** based on real industry knowledge. The kind of advice you'd get from a senior engineer friend who's seen it all: counteroffers are usually traps, your TC matters more than your title, and sometimes the best career move is quitting before you burn out.
+This project creates an AI that gives **direct, opinionated career advice** based on real industry knowledge. The kind of advice you'd get from someone who's seen it all: counteroffers are usually traps, your TC matters more than your title, and sometimes the best career move is quitting before you burn out.
 
-Think Blind/levels.fyi energy, but actually helpful.
+**Industries covered:**
+- **Tech**: Software engineering, product management, FAANG careers
+- **Investment Banking**: Analysts through MDs, bulge brackets and elite boutiques
+- **Private Equity**: Breaking in, career progression, exits
+- **Hedge Funds**: Fundamental, quant, macro strategies
+- **Asset Management**: Portfolio management, equity research, CFA path
+- **Sales & Trading**: Trading desks, market making, client coverage
+- **Strategy Consulting**: MBB (McKinsey, Bain, BCG), case interviews, partner track
+
+Think Blind/levels.fyi/Wall Street Oasis energy, but actually helpful.
 
 ## Example Responses
 
