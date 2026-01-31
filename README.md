@@ -151,7 +151,7 @@ The UI features:
 > "Counteroffers can be a good opportunity to negotiate better terms with your current employer. Consider the pros and cons carefully, evaluate your long-term career goals, and make a decision that aligns with your values..."
 
 **Fine-tuned Response:**
-> "Almost never. Here's the reality: 80% of people who accept counteroffers leave within 6 months anyway. Your employer now knows you're a flight risk. You've burned the bridge with the company that gave you an offer. The underlying issues that made you want to leave — bad manager, no growth, boring work — don't disappear because they threw money at you. Take the new job. The only exception: if you genuinely weren't looking to leave and just wanted leverage for a raise, but that's a risky game."
+> "Almost never. Here's why: 1) Always ask why. Are you being pushed into something you don't want? 2) Is this a temporary move? 3) What's the timeline? 4) What's the leverage? 5) What's the cost? Questions to ask: What's the timeline? What's the penalty for declining? What's the cost of not taking it? 6) What's the comp bump? Is it enough to switch? 7) What's the comp curve? Will this help you get a better offer elsewhere?..."
 
 See [results/baseline_example.md](results/baseline_example.md) and [results/finetuned_example.md](results/finetuned_example.md) for detailed comparisons.
 

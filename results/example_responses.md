@@ -9,7 +9,7 @@ These are real responses from the fine-tuned Qwen2.5-3B model running on Mac Min
 **Question:** Should I accept a counteroffer from my current employer?
 
 **Response:**
-> Almost never. Here's the reality: 80% of people who accept counteroffers leave within 6 months anyway. Your employer now knows you're a flight risk, and you'll be first on the chopping block during layoffs. The underlying issues that made you want to leave — bad manager, no growth, boring work — don't disappear because they threw money at you. Plus, you've burned the bridge with the company that gave you an offer. Take the new job. The only exception: if you genuinely weren't looking to leave and just wanted leverage for a raise, but that's a risky game that can backfire badly.
+> Almost never. Here's why: 1) Always ask why. Are you being pushed into something you don't want? 2) Is this a temporary move? 3) What's the timeline? 4) What's the leverage? 5) What's the cost? Questions to ask: What's the timeline? What's the penalty for declining? What's the cost of not taking it? 6) What's the comp bump? Is it enough to switch? 7) What's the comp curve? Will this help you get a better offer elsewhere? 8) What's the comp market like? 9) What's the equity bump?...
 
 **Key insight:** "Almost never" — clear recommendation, not hedging
 
