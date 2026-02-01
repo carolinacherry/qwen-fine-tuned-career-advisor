@@ -14,6 +14,11 @@ if [ ! -f "$PROJECT_DIR/data/train.jsonl" ]; then
     echo "Please ensure the training data file exists in the data directory"
     exit 1
 fi
+if [ ! -f "$PROJECT_DIR/data/valid.jsonl" ]; then
+    echo "ERROR: data/valid.jsonl not found"
+    echo "Please ensure the validation data file exists in the data directory"
+    exit 1
+fi
 echo "✓ Training data found"
 
 # Count training examples
@@ -36,7 +41,9 @@ mkdir -p "$PROJECT_DIR/lora_adapters"
 echo ""
 echo "Starting LoRA fine-tuning..."
 echo "Model: Qwen/Qwen2.5-3B-Instruct"
-echo "This will take some time depending on your hardware."
+echo ""
+echo "NOTE: First run will download the model from HuggingFace (~6GB)."
+echo "This may take several minutes depending on your internet connection."
 echo ""
 
 # Run LoRA fine-tuning with mlx-lm

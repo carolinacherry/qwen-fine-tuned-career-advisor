@@ -9,9 +9,9 @@ echo "=== Career Advisor Web UI ==="
 echo ""
 
 # Check for LoRA adapters
-if [ ! -d "$PROJECT_DIR/lora_adapters" ]; then
-    echo "ERROR: lora_adapters directory not found"
-    echo "Please run ./scripts/finetune.sh first"
+if [ ! -f "$PROJECT_DIR/lora_adapters/adapters.safetensors" ]; then
+    echo "ERROR: lora_adapters/adapters.safetensors not found"
+    echo "Please run ./scripts/finetune.sh first to train the model"
     exit 1
 fi
 

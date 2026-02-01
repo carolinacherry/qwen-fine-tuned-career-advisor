@@ -83,6 +83,7 @@ See [results/example_responses.md](results/example_responses.md) for full respon
 | RAM | 16GB | 16GB+ |
 | Disk Space | 10GB | 20GB |
 | macOS | Ventura 13.0+ | Sonoma 14.0+ |
+| Python | 3.11+ | 3.11+ |
 
 Fine-tuning uses ~7.2GB peak RAM with the 3B model and batch size 1. Inference requires ~6GB.
 
@@ -119,6 +120,8 @@ Train the model on opinionated career advice:
 ```
 
 Training takes approximately 38 minutes on Mac Mini M4 (2000 iterations).
+
+> **Note:** First run will download the Qwen2.5-3B model from HuggingFace (~6GB). This may take several minutes depending on your internet connection.
 
 ### Run Fine-tuned Model
 
@@ -210,6 +213,7 @@ qwen-fine-tuned-career-advisor/
 ├── README.md
 ├── LICENSE
 ├── CONTRIBUTING.md
+├── requirements.txt          # Python dependencies
 ├── app.py                    # Gradio web UI (gr.Interface)
 ├── training_data.jsonl       # Original 200 examples (legacy format)
 ├── eval_questions.json       # 20 benchmark questions

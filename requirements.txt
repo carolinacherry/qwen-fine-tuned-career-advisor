@@ -1,0 +1,9 @@
+# Core ML dependencies
+mlx>=0.30.0
+mlx-lm>=0.30.0
+
+# Web UI
+gradio>=5.0.0
+
+# Tokenizer support
+transformers>=4.40.0

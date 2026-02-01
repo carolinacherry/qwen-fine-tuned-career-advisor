@@ -61,7 +61,7 @@ source "$PROJECT_DIR/venv/bin/activate"
 
 echo "Installing Python dependencies..."
 pip install --upgrade pip
-pip install mlx mlx-lm transformers gradio
+pip install -r "$PROJECT_DIR/requirements.txt"
 
 echo "✓ Python dependencies installed"
 
